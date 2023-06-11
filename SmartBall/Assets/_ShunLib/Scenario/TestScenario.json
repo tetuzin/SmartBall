@@ -1,0 +1,71 @@
+{
+    "ScenarioName": "Test Scenario",
+    "DialogList": [
+        {
+            "CharacterName": "character1",
+            "MainText": "character1 text",
+            "Actions":[
+                {
+                    "Type": 0,
+                    "FilePath": "Scenario/chara1",
+                    "StrParam1": "chara1",
+                    "NumParam1": 0,
+                    "NumParam2": 0
+                }
+            ]
+        },
+        {
+            "CharacterName": "character2",
+            "MainText": "character2 text",
+            "Actions":[
+                {
+                    "Type": 0,
+                    "FilePath": "Scenario/chara1",
+                    "StrParam1": "chara1",
+                    "NumParam1": 2,
+                    "NumParam2": 1
+                },
+                {
+                    "Type": 0,
+                    "FilePath": "Scenario/chara2",
+                    "StrParam1": "chara2",
+                    "NumParam1": 0,
+                    "NumParam2": 0
+                }
+            ]
+        },
+        {
+            "CharacterName": "",
+            "MainText": "non character text",
+            "Actions":[
+                {
+                    "Type": 0,
+                    "FilePath": "Scenario/chara1",
+                    "StrParam1": "chara1",
+                    "NumParam1": 1,
+                    "NumParam2": 1
+                },
+                {
+                    "Type": 0,
+                    "FilePath": "Scenario/chara2",
+                    "StrParam1": "chara2",
+                    "NumParam1": 1,
+                    "NumParam2": 0
+                }
+            ]
+        },
+        {
+            "CharacterName": "character3",
+            "MainText": "character3 text",
+            "Actions":[
+                {
+                    "Type": 0,
+                    "FilePath": "Scenario/chara3",
+                    "StrParam1": "chara3",
+                    "NumParam1": 0,
+                    "NumParam2": 0
+                }
+            ]
+        }
+    ]
+}
