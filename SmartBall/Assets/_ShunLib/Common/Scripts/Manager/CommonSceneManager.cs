@@ -5,6 +5,7 @@ using ShunLib.Manager.Initialize;
 using ShunLib.Manager.Camera;
 using ShunLib.Controller.Character3D;
 using ShunLib.Controller.InputKey;
+using ShunLib.Utils.Debug;
 
 namespace ShunLib.Manager.CommonScene
 {
@@ -52,9 +53,16 @@ namespace ShunLib.Manager.CommonScene
             _cameraManager.Initialize();
 
             // キャラクターコントローラ3D初期化
-            _characterController3D?.SetCameraManager(_cameraManager);
-            _cameraManager.SetTrackObject(_characterController3D.GetAvatorCamera());
-            _characterController3D?.Initialize();
+            if (_characterController3D != default && _characterController3D != null)
+            {
+                _characterController3D?.SetCameraManager(_cameraManager);
+                _cameraManager.SetTrackObject(_characterController3D.GetAvatorCamera());
+                _characterController3D?.Initialize();
+            }
+            else
+            {
+                DebugUtils.LogWarning("キャラクターコントローラが設定されていません！");
+            }
             
             // キーコントローラ初期化
             if (_inputKeyController != default)

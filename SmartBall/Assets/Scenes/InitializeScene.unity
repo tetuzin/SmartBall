@@ -430,7 +430,7 @@ MonoBehaviour:
   _playFabManager: {fileID: 0}
   _strixMasterManager: {fileID: 0}
   _strixRoomManager: {fileID: 0}
-  _transSceneName: TitleScene
+  _transSceneName: IngameScene
 --- !u!4 &910645478
 Transform:
   m_ObjectHideFlags: 0
