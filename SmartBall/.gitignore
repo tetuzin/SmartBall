@@ -1,0 +1,25 @@
+Library
+Temp
+Logs
+obj
+.idea
+Recordings
+UserSettings
+UserSettings/Layouts/CurrentMaximizeLayout.dwlt
+UserSettings/Layouts/default-2021.dwlt
+*.bat
+*.csproj
+*.csproj.user
+*.booproj
+*.pidb
+*.sln
+*.sln.meta
+*.suo
+*.unityproj
+*.userprefs
+*.userprefs.meta
+*.vsconfig
+*~
+.DS_Store
+*[! -~]*
+*.pidb.meta
