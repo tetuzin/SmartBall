@@ -28,13 +28,13 @@ namespace SmartBall
 
         private void Update()
         {
-            if (isTouch)
+            if (Input.GetMouseButtonUp(0))
             {
-                touchTime += Time.deltaTime;
-                if (clickPos != Vector2.zero)
-                {
-                    MoveTappingCallback?.Invoke(clickPos, Input.mousePosition);
-                }
+                touchTime = 0f;
+                clickPos = Vector2.zero;
+                isTouch = false;
+                ReleaseTappingCallback?.Invoke();
+                return;
             }
 
             if (Input.GetMouseButtonDown(0))
@@ -44,12 +44,13 @@ namespace SmartBall
                 isTouch = true;
             }
 
-            if (Input.GetMouseButtonUp(0))
+            if (isTouch)
             {
-                touchTime = 0f;
-                clickPos = Vector2.zero;
-                isTouch = false;
-                ReleaseTappingCallback?.Invoke();
+                touchTime += Time.deltaTime;
+                if (clickPos != Vector2.zero)
+                {
+                    MoveTappingCallback?.Invoke(clickPos, Input.mousePosition);
+                }
             }
         }
 

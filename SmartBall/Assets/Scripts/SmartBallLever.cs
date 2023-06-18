@@ -18,17 +18,28 @@ namespace SmartBall
         // ---------- インスタンス変数宣言 ----------
 
         private Vector3 defaultPos = default;
+        private Vector3 _force = default;
         private bool isRelease = default;
+        private bool isStop = default;
 
         // ---------- Unity組込関数 ----------
 
         void Update()
         {
+            if (isStop)
+            {
+                this.transform.localPosition = defaultPos;
+            }
             if (isRelease && this.transform.localPosition.z >= defaultPos.z)
             {
                 isRelease = false;
                 _rb.velocity = Vector3.zero;
                 this.transform.localPosition = defaultPos;
+                isStop = true;
+            }
+            if (isRelease)
+            {
+                _rb.AddForce(_force);
             }
         }
 
@@ -38,7 +49,9 @@ namespace SmartBall
         public void Initialize()
         {
             defaultPos = this.transform.localPosition;
+            _force = Vector3.zero;
             isRelease = false;
+            isStop = true;
         }
 
         // レバーを引いているときの処理
@@ -46,6 +59,8 @@ namespace SmartBall
         {
             if (beforePos.y < afterPos.y) return;
 
+            isStop = false;
+            isRelease = false;
             float distance = (afterPos.y - beforePos.y) / 100;
             this.transform.localPosition = new Vector3(
                 defaultPos.x, defaultPos.y, defaultPos.z + distance
@@ -55,14 +70,11 @@ namespace SmartBall
         // レバーを離したときの処理
         public void Release()
         {
-            // this.transform.localPosition = defaultPos;
-
             isRelease = true;
             float forceValue = Mathf.Abs(Vector3.Distance(this.transform.localPosition, defaultPos));
-            forceValue *= 100;
-            Debug.Log(forceValue);
-            Vector3 force = new Vector3(0f, 0f, forceValue);
-            _rb.AddForce(force, ForceMode.Impulse);
+            forceValue *= 150000f;
+            _force = new Vector3(0f, 0f, 600000f + forceValue);
+            Debug.Log(_force);
         }
 
         // ---------- Private関数 ----------
